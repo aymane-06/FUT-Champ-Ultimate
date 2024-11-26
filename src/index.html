@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="font-Poppins">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="output.css">
+    <title>Document</title>
+</head>
+<body class="bg-bodyBG min-w-[320px] min-h-screen filter sepia-[50%] bg-[#2B2A2A] m-0 [background-size:100%_auto] bg-[center_top_70px] bg-no-repeat">
+    <nav class="flex items-center h-[64px] justify-between  bg-[#040404]">
+        <a href=""><img class="h-[32px] w-[32px] m-[5px]" src="https://cdn.futbin.com/design/img/logos/futbin-green-small.png?v=5" alt="logo"></a>
+        <ul class="flex gap-[20px]  text-[#eaf8f3] items-center w-[50%]">
+            <button class="hover:text-[#55cca2] w-[50%]">Squad builder</button>
+            <button class="bg-[#55cca2] rounded-[20px] w-[50%] h-[50px] font-Poppins hover:bg-[#55cca288]">ADD New player</button>
+        </ul>
+    </nav>
+    <header class="m-[100px]">
+        <h1 class="text-cyan-50">EA FC 25 Squad Builder</h1>
+        <p class="text-cyan-50 text-[10px] py-2">Create EA FC 25 Squads</p>
+    </header>
+    <section id="filde" class="relative p-[100px]">
+        <img src="https://www.futbin.com/design2/img/static/field-bg.svg" class="w-[892px] [aspect-ratio:auto_892_/_725] h-[725px]" alt="filde not loade">
+        <!-- manager -->
+        <!-- <div class="player_card absolute top-[0]  text-center w-[100px]">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+                <h1 class="text-[#929696] -ml-[18px]">Manager</h1>
+        </div> -->
+     <div class="attack flex justify-around gap-11 absolute top-0">  
+    <!-- lw -->
+        <div class="player_card relative  text-center h-[196px] w-[130px]">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+        </div>
+        <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">LW</div>
+        </div>
+        <!-- st  -->
+        <div class="player_card relative text-center h-[196px] w-[130px]">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+        </div>
+        <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">ST</div>
+        </div>
+        <!-- rw -->
+        <div class="player_card relative text-center h-[196px] w-[130px]">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+        </div>
+        <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">RW</div>
+    </div>
+    </div>
+       
+        <div></div>
+        
+       
+         
+    </section>
+</body>
+<script src="script.js"></script>
+</html>

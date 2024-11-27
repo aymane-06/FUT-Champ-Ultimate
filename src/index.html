@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.4.1/dist/css/tom-select.css" rel="stylesheet">
     <link rel="stylesheet" href="output.css">
     <title>Document</title>
 </head>
@@ -18,19 +19,13 @@
         <h1 class="text-cyan-50">EA FC 25 Squad Builder</h1>
         <p class="text-cyan-50 text-[10px] py-2">Create EA FC 25 Squads</p>
     </header>
-    <section id="filde" class="relative p-[100px]">
-        <img src="https://www.futbin.com/design2/img/static/field-bg.svg" class="w-[892px] [aspect-ratio:auto_892_/_725] h-[725px]" alt="filde not loade">
-        <!-- manager -->
-        <!-- <div class="player_card absolute top-[0]  text-center w-[100px]">
-            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
-            <div class="absolute top-[84px] left-[47px]">
-                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
-                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
-                <h1 class="text-[#929696] -ml-[18px]">Manager</h1>
-        </div> -->
-     <div class="attack flex justify-around gap-11 absolute top-0">  
+    <section class="flex w-full">
+    <section id="filde" class="relative p-[100px] flex flex-col w-[70%] items-center ">
+        <img src="https://www.futbin.com/design2/img/static/field-bg.svg" class="w-[892px] [aspect-ratio:auto_892_/_725] h-[100%] object-contain" alt="filde not loade">
+        <div id="players_cards" class="flex flex-col absolute top-0 w-full">
+     <div id="attack" class="flex justify-center gap-[110px]">  
     <!-- lw -->
-        <div class="player_card relative  text-center h-[196px] w-[130px]">
+        <div class="player_card relative  text-center h-[196px] w-[130px] top-[30px]">
             <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
             <div class="absolute top-[84px] left-[47px]">
                 <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
@@ -48,7 +43,7 @@
         <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">ST</div>
         </div>
         <!-- rw -->
-        <div class="player_card relative text-center h-[196px] w-[130px]">
+        <div class="player_card relative text-center h-[196px] w-[130px] top-[30px]">
             <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
             <div class="absolute top-[84px] left-[47px]">
                 <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
@@ -56,13 +51,226 @@
         </div>
         <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">RW</div>
     </div>
+     </div>
+     <div id='mid' class="flex justify-center gap-[80px] relative top-[40px]">
+    <div class="player_card relative  text-center h-[196px] w-[130px]">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+        </div>
+        <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">CM</div>
+     </div>
+        <!-- cm -->
+        <div class="player_card relative  text-center h-[196px] w-[130px] top-8">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+        </div>
+        <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">CM</div>
     </div>
-       
-        <div></div>
-        
-       
-         
+        <!-- cm -->
+        <div class="player_card relative  text-center h-[196px] w-[130px]">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+        </div>
+        <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">CM</div>
+    </div>
+    </div>
+
+<div id="deffenc" class="flex  relative top-8 justify-center gap-20">
+    <!-- lb -->
+        <div class="player_card relative text-center h-[196px] w-[130px]">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+        </div>
+        <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">LB</div>
+        </div>
+        <!-- cb -->
+        <div class="player_card relative top-8 text-center h-[196px] w-[130px]">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+        </div>
+        <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans ">CB</div> 
+      </div>
+        <!-- cb -->
+        <div class="player_card relative top-8 text-center h-[196px] w-[130px]">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+        </div>
+        <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">CB</div>
+        </div>
+        <!-- lb -->
+        <div class="player_card relative text-center h-[196px] w-[130px]">
+            <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+            <div class="absolute top-[84px] left-[47px]">
+                <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+                <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+        </div>
+        <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">RB</div>
+    </div>
+</div>
+<div id="GP" class="flex justify-center">
+<!-- gb -->
+<div class="player_card relative   text-center h-[196px] w-[130px]">
+    <img class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] " src="./assets/img/placeholder-card-normal.webp" alt="">
+    <div class="absolute top-[84px] left-[47px]">
+        <svg class="text-[#07D95A]" viewBox="0 0 36 42" fill="none" width="36"><path d="M18.6275 41.711L18.3137 41.0298C18.1146 41.1215 17.8854 41.1215 17.6863 41.0298L17.3726 41.711L17.6863 41.0298L1.18627 33.4311C0.920355 33.3087 0.75 33.0427 0.75 32.7499V8.7248C0.75 8.42506 0.928458 8.15411 1.20383 8.03575L17.7038 0.943648C17.8929 0.862375 18.1071 0.862375 18.2962 0.943648L34.7962 8.03575C35.0715 8.15411 35.25 8.42506 35.25 8.7248V32.7499C35.25 33.0427 35.0796 33.3087 34.8137 33.4311L18.3137 41.0298L18.6275 41.711Z" stroke="currentColor" stroke-width="1.5"></path></svg>
+        <h1 class="text-[#07D95A] font-sans absolute top-[7px] left-[12.5px]">+</h1>
+</div>
+<div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans">GK</div>
+</div>
+</div>
+</div>
+</div>      
     </section>
+    <section id="players_sub" class="border-[#59544a] border-solid border-[2px] h-[700px] mr-8 w-[500px]">
+    </section>
+</section>
+<section id="add_player " class="flex gap-[40px]" >
+    
+    <form action="" class="flex flex-col items-center m-[53px]">
+        <h1 class="text-white m-[30px]"><Span id="label" >ADD</Span>Player</h1>
+        <div class="flex items-center gap-8">
+            <label for="select-Name" class="text-white">Player name:<br>
+                <input type="text" name="name" placeholder="Enter Name" class="w-[300px] flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+            </label>
+            <label for="select-Rating" class="text-white">Overall Rating:<br>
+                <input type="text" name="rating" placeholder="Enter Rating" class="w-[300px] flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+            </label>
+            <label for="football-positions" class="text-white">Player Position<br>
+            <select name="football-positions" id="football-positions" class="w-[300px] text-white flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+            </label>
+                <!-- Goalkeeper -->
+  <option value="GK">Goalkeeper (GK)</option>
+
+  <!-- Defenders -->
+  <option value="CB">Center-Back (CB)</option>
+  <option value="LB">Left Back (LB)</option>
+  <option value="RB">Right Back (RB)</option>
+  <option value="LWB">Left Wing-Back (LWB)</option>
+  <option value="RWB">Right Wing-Back (RWB)</option>
+  <option value="SW">Sweeper (SW)</option>
+
+  <!-- Midfielders -->
+  <option value="CDM">Defensive Midfielder (CDM)</option>
+  <option value="CM">Central Midfielder (CM)</option>
+  <option value="CAM">Attacking Midfielder (CAM)</option>
+  <option value="LM">Left Midfielder (LM)</option>
+  <option value="RM">Right Midfielder (RM)</option>
+  <option value="BBM">Box-to-Box Midfielder</option>
+  <option value="DPM">Deep-Lying Playmaker</option>
+
+  <!-- Forwards -->
+  <option value="ST">Striker (ST)</option>
+  <option value="CF">Center Forward (CF)</option>
+  <option value="LW">Left Winger (LW)</option>
+  <option value="RW">Right Winger (RW)</option>
+  <option value="SS">Second Striker (SS)</option>
+  <option value="FN">False Nine</option>
+              </select>
+        </div>
+        <label for="palyer-img" class="text-white ">Player Image:
+            <input type="text" name="img" placeholder="Enter URL" class="w-[300px] flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+        </label>
+        <div class="flex gap-8">
+        <label for="select-league"class="text-white">League:
+        <select id="select-league" class="w-[300px] flex "  style="background-color: #1e1e1e;" placeholder="Pick leauge"></select>
+    </label>
+        <label for="select-nation" class="text-white">Nation:
+        <select id="select-nation" class="w-[300px] flex " style="background-color: #1e1e1e;" placeholder="Pick Nation"></select>
+    </label> 
+</div>
+
+<div class="flex gap-8">
+    <label for="select-version" class="text-white">Version:
+        <select id="select-version" class="w-[300px] flex " style="background-color: #1e1e1e;" placeholder="Pick Version"></select>
+    </label> 
+    <label for="select-club" class="text-white">Club:
+        <select id="select-club" class="w-[300px] flex " style="background-color: #1e1e1e;" placeholder="Pick Club"></select>
+    </label> 
+</div>
+<h1 class="text-white text-center" >Player Stats</h1>
+<div class="flex gap-8">
+    <label for="PAC" class="text-white">PAC:<br>
+        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+    </label>
+    <label for="PAS" class="text-white">PAS:<br>
+        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+    </label>
+    <label for="DEF" class="text-white">DEF:<br>
+        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+    </label>
+    <label for="SHO" class="text-white">SHO:<br>
+        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+    </label>
+    <label for="DRI" class="text-white">DRI:<br>
+        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+    </label>
+    <label for="PHY" class="text-white">PHY:<br>
+        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+    </label>
+</div>
+    <Button type="button" class="mt-8 bg-[#55cca2] rounded-[20px] w-[50%] h-[50px] font-Poppins hover:bg-[#55cca288]">Save Player</Button>
+    </form>
+        <div id="ShowCard" class=" w-[260px] h-[360px]">
+            <div class="player_card relative top-8 text-center h-full w-[100%] ">
+                <img id="cardBG" class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] w-[260px]" src="./assets/img/placeholder-card-normal.webp" alt="">
+                <div class="absolute top-[75px] left-[38px] flex flex-col items-center ">
+                    <h1 class=" text-[#fff]  text-[20px] -mb-[10px]" id="rating">85</h1>
+                    <h1 class=" text-[#fff] " id="post">ST</h1>
+                </div>
+                <div  class="absolute w-[80%] top-[40px] right-[14px]">
+                    <img class="w-full" id="player_img" src="https://cdn3.futbin.com/content/fifa25/img/players/p67266887.png?fm=png&ixlib=java-2.1.0&verzion=1&w=485&s=ac939a25dd889c2cf50ebc5548e60369" alt="">
+                </div>
+                <div class="absolute bottom-[130px] left-[80px] text-[30px]">
+                    <h1 id="card-name" >Messi</h1>
+                </div>
+                <div id="stats" class="absolute text-white flex gap-1 bottom-20 left-[38px]"> 
+                    <div>
+                    <span class="font-sans">PAC</span>  
+                    <div id="PAC">85</div>
+                </div>
+                <div>
+                    <span class="font-sans">SHO</span>  
+                    <div id="SHO">85</div>
+                </div>
+                <div>
+                    <span class="font-sans">PAS</span>  
+                    <div id="PAS">85</div>
+                </div>
+                <div>
+                    <span class="font-sans">DRI</span>  
+                    <div id="DRI">85</div>
+                </div>
+                <div>
+                    <span class="font-sans">DEF</span>  
+                    <div id="DEF">85</div>
+                </div>
+                <div>
+                    <span class="font-sans">PHY</span>  
+                    <div id="PHY">85</div>
+                </div>
+            </div>
+            <div class="flex absolute gap-2 bottom-[52px] left-[92px]">
+                <img id="NatioFlag" height="20" width="20" src="https://cdn3.futbin.com/content/fifa25/img/nation/52.png?fm=png&ixlib=java-2.1.0&w=70&s=b29d36ad91598e91ddb6df42d6ca9e61" alt="">
+                <img id="leagueLogo" height="20" width="20" src="https://cdn3.futbin.com/content/fifa25/img/league/light/39.png?fm=png&ixlib=java-2.1.0&verzion=1&w=512&s=5bca65c46ac4e537eef3cba6e97ee7d6" alt="">
+                <img id="teamLogo" height="20" width="20" src="https://cdn3.futbin.com/content/fifa25/img/clubs/light/112893.png?fm=png&ixlib=java-2.1.0&verzion=2&w=256&s=703ee6701be96a9d2e6fbd92831b3fa5" alt="">
+            </div>
+            <div class="typ rounded- bg-tyBG [background-size:55px_35px] bg-no-repeat bg-center h-[29px] text-white font-sans hidden">GK</div>
+            </div>
+        </div>
+</section>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.4.1/dist/js/tom-select.complete.min.js"></script>
 <script src="script.js"></script>
 </html>

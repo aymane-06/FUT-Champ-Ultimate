@@ -40,14 +40,14 @@ new TomSelect('#select-league',{
     // custom rendering functions for options and items
     render: {
         option: function(item, escape) {
-            return `<div class="flex w-full">
+            return `<div class="flex w-full clicked">
                     <img src="${item.img}" alt="" class="w-[20px] h-[20px]" >
                     <h1>${item.name}</h1>
                     </div>`;
         },
         item: function(item, escape) {
-            return `<div class="flex" style="display: flex;align-items: center;">
-                    <img src="${item.img}" alt="" class="w-[20px] h-[20px]" >
+            return `<div class="flex " style="display: flex;align-items: center;">
+                    <img src="${item.img}" alt="" class="w-[20px] h-[20px] leaugeImg" >
                     <span>${item.name}</span>
                     </div>`;
         }
@@ -79,7 +79,7 @@ new TomSelect('#select-nation',{
         },
         item: function(item, escape) {
             return `<div class="flex" style="display: flex;align-items: center;">
-                    <img src="${item.img}" alt="" class="w-[20px] h-[20px]" >
+                    <img src="${item.img}" alt="" class="w-[20px] h-[20px] NationImg" >
                     <span>${item.name}</span>
                     </div>`;
         }
@@ -112,7 +112,7 @@ new TomSelect('#select-version',{
         },
         item: function(item, escape) {
             return `<div class="flex" style="display: flex;align-items: center;">
-                    <img src="${item.img}" alt="" class="w-[20px] h-[20px]" >
+                    <img src="${item.img}" alt="" class="w-[20px] h-[20px] CardImg" >
                     <span>${item.name}</span>
                     </div>`;
         }
@@ -144,34 +144,69 @@ new TomSelect('#select-club',{
         },
         item: function(item, escape) {
             return `<div class="flex" style="display: flex;align-items: center;">
-                    <img src="${item.img}" alt="" class="w-[20px] h-[20px]" >
+                    <img src="${item.img}" alt="" class="w-[20px] h-[20px] ClubImg" >
                     <span>${item.name}</span>
                     </div>`;
         }
     },
 });
 
+
+const statsInp=document.querySelectorAll('input[type="number"]');
+const Rating=document.getElementById('card-rating');
+
+
+
+let totalRating=0;
+statsInp.forEach(inp=>{
+    inp.addEventListener("blur",()=>{
+        totalRating=0
+      for(let i=0;i<statsInp.length;i++){
+        const value=parseInt(statsInp[i].value)||0
+        totalRating+=value;
+      }
+      Rating.textContent=`${parseInt(totalRating/6)}`;
+    })
+})
+
 const dataInput=Array.from(document.querySelectorAll('input'));
-const playerNAme=document.getElementById('playerName');
-const rating=document.getElementById('rating');
-const post=document.getElementById('post');
-const player_img=document.getElementById('player_img');
-const leagueLogo=document.getElementById('leagueLogo');
-const NatioFlag=document.getElementById('NatioFlag');
-const teamLogo=document.getElementById('teamLogo');
-const cardBG=document.getElementById('cardBG');
-const PAC=document.getElementById('PAC');
-const PAS=document.getElementById('PAS');
-const DEF=document.getElementById('DEF');
-const SHO=document.getElementById('SHO');
-const DRI=document.getElementById('DRI');
-const PHY=document.getElementById('PHY');
-
-
 
  dataInput.forEach(input=>{
     input.addEventListener('input',()=>{
-        document.querySelector(`#card-${input.name}`).textContent = input.value
+        if (input.value !== null) {
+            document.querySelector(`#card-${input.name}`).textContent = input.value;
+        }
+    })
+    input.addEventListener('blur',()=>{
+        const leaugeImg=document.querySelector('.leaugeImg');
+        const leagueLogo=document.getElementById('leagueLogo');
+        let leagueSrc=leaugeImg.getAttribute('src')
+        if(leagueSrc!=null){
+        leagueLogo.setAttribute('src',`${leagueSrc}`)
+    }
+        const NationImg=document.querySelector('.NationImg');
+        const NatioFlag=document.getElementById('NatioFlag');
+        let NationSrc=NationImg.getAttribute('src');
+        NatioFlag.setAttribute('src',`${NationSrc}`);
+
+        const CardImg=document.querySelector('.CardImg');
+        const cardBG=document.getElementById('cardBG');
+        let CardSrc=CardImg.getAttribute('src');
+        cardBG.setAttribute('src',`${CardSrc}`);
+        
+        const ClubImg=document.querySelector('ClubImg');
+        const teamLogo=document.getElementById('teamLogo');
+        
+        
+        let clubSrc=ClubImg.getAttribute('src');
+        console.log(clubSrc);
+        
+        // teamLogo.setAttribute('src',`${clubSrc}`);
     })
  })
+ 
+ 
+ 
+ 
+ 
 

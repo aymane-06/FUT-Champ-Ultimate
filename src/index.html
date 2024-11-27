@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="output.css">
     <title>Document</title>
 </head>
-<body class="bg-bodyBG min-w-[320px] min-h-screen filter sepia-[50%] bg-[#2B2A2A] m-0 [background-size:100%_auto] bg-[center_top_70px] bg-no-repeat">
+<body class="bg-bodyBG min-w-[320px] min-h-screen filter sepia-[50%] bg-[#2B2A2A] m-0 [background-size:99%_auto] bg-[center_top_70px] bg-no-repeat">
     <nav class="flex items-center h-[64px] justify-between  bg-[#040404]">
         <a href=""><img class="h-[32px] w-[32px] m-[5px]" src="https://cdn.futbin.com/design/img/logos/futbin-green-small.png?v=5" alt="logo"></a>
         <ul class="flex gap-[20px]  text-[#eaf8f3] items-center w-[50%]">
@@ -15,13 +15,13 @@
             <button class="bg-[#55cca2] rounded-[20px] w-[50%] h-[50px] font-Poppins hover:bg-[#55cca288]">ADD New player</button>
         </ul>
     </nav>
-    <header class="m-[100px]">
+    <header class="m-[99px]">
         <h1 class="text-cyan-50">EA FC 25 Squad Builder</h1>
         <p class="text-cyan-50 text-[10px] py-2">Create EA FC 25 Squads</p>
     </header>
     <section class="flex w-full">
-    <section id="filde" class="relative p-[100px] flex flex-col w-[70%] items-center ">
-        <img src="https://www.futbin.com/design2/img/static/field-bg.svg" class="w-[892px] [aspect-ratio:auto_892_/_725] h-[100%] object-contain" alt="filde not loade">
+    <section id="filde" class="relative p-[99px] flex flex-col w-[70%] items-center ">
+        <img src="https://www.futbin.com/design2/img/static/field-bg.svg" class="w-[892px] [aspect-ratio:auto_892_/_725] h-[99%] object-contain" alt="filde not loade">
         <div id="players_cards" class="flex flex-col absolute top-0 w-full">
      <div id="attack" class="flex justify-center gap-[110px]">  
     <!-- lw -->
@@ -136,7 +136,7 @@
     <section id="players_sub" class="border-[#59544a] border-solid border-[2px] h-[700px] mr-8 w-[500px]">
     </section>
 </section>
-<section id="add_player " class="flex gap-[40px]" >
+<section id="add_player " class="flex gap-[40px] justify-center" >
     
     <form action="" class="flex flex-col items-center m-[53px]">
         <h1 class="text-white m-[30px]"><Span id="label" >ADD</Span>Player</h1>
@@ -144,11 +144,11 @@
             <label for="select-Name" class="text-white">Player name:<br>
                 <input type="text" name="name" placeholder="Enter Name" class="w-[300px] flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
             </label>
-            <label for="select-Rating" class="text-white">Overall Rating:<br>
+            <!-- <label for="select-Rating" class="text-white">Overall Rating:<br>
                 <input type="text" name="rating" placeholder="Enter Rating" class="w-[300px] flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
-            </label>
+            </label> -->
             <label for="football-positions" class="text-white">Player Position<br>
-            <select name="football-positions" id="football-positions" class="w-[300px] text-white flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+            <select name="positions" id="football-positions" class="w-[300px] text-white flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
             </label>
                 <!-- Goalkeeper -->
   <option value="GK">Goalkeeper (GK)</option>
@@ -202,31 +202,31 @@
 <h1 class="text-white text-center" >Player Stats</h1>
 <div class="flex gap-8">
     <label for="PAC" class="text-white">PAC:<br>
-        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+        <input type="number"name="pac" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]" >
     </label>
     <label for="PAS" class="text-white">PAS:<br>
-        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+        <input type="number" name="pas" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
     </label>
     <label for="DEF" class="text-white">DEF:<br>
-        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+        <input type="number" name="def" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
     </label>
     <label for="SHO" class="text-white">SHO:<br>
-        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+        <input type="number" name="sho" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
     </label>
     <label for="DRI" class="text-white">DRI:<br>
-        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+        <input type="number" name="dri" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
     </label>
     <label for="PHY" class="text-white">PHY:<br>
-        <input type="number" min="30" max="100" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
+        <input type="number" name="phy" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
     </label>
 </div>
-    <Button type="button" class="mt-8 bg-[#55cca2] rounded-[20px] w-[50%] h-[50px] font-Poppins hover:bg-[#55cca288]">Save Player</Button>
+    <Button type="button" id="btn" class="mt-8 bg-[#55cca2] rounded-[20px] w-[50%] h-[50px] font-Poppins hover:bg-[#55cca288]">Save Player</Button>
     </form>
         <div id="ShowCard" class=" w-[260px] h-[360px]">
-            <div class="player_card relative top-8 text-center h-full w-[100%] ">
+            <div class="player_card relative top-8 text-center h-full w-[99%] ">
                 <img id="cardBG" class="hover:[filter:drop-shadow(20px_20px_20px_#417560)] w-[260px]" src="./assets/img/placeholder-card-normal.webp" alt="">
                 <div class="absolute top-[75px] left-[38px] flex flex-col items-center ">
-                    <h1 class=" text-[#fff]  text-[20px] -mb-[10px]" id="rating">85</h1>
+                    <h1 class=" text-[#fff]  text-[20px] -mb-[10px]" id="card-rating">85</h1>
                     <h1 class=" text-[#fff] " id="post">ST</h1>
                 </div>
                 <div  class="absolute w-[80%] top-[40px] right-[14px]">
@@ -238,27 +238,27 @@
                 <div id="stats" class="absolute text-white flex gap-1 bottom-20 left-[38px]"> 
                     <div>
                     <span class="font-sans">PAC</span>  
-                    <div id="PAC">85</div>
+                    <div id="card-pac">85</div>
                 </div>
                 <div>
                     <span class="font-sans">SHO</span>  
-                    <div id="SHO">85</div>
+                    <div id="card-sho">85</div>
                 </div>
                 <div>
                     <span class="font-sans">PAS</span>  
-                    <div id="PAS">85</div>
+                    <div id="card-pas">85</div>
                 </div>
                 <div>
                     <span class="font-sans">DRI</span>  
-                    <div id="DRI">85</div>
+                    <div id="card-dri">85</div>
                 </div>
                 <div>
                     <span class="font-sans">DEF</span>  
-                    <div id="DEF">85</div>
+                    <div id="card-def">85</div>
                 </div>
                 <div>
                     <span class="font-sans">PHY</span>  
-                    <div id="PHY">85</div>
+                    <div id="card-phy">85</div>
                 </div>
             </div>
             <div class="flex absolute gap-2 bottom-[52px] left-[92px]">

@@ -170,20 +170,28 @@ statsInp.forEach(inp=>{
 })
 
 const dataInput=Array.from(document.querySelectorAll('input'));
+// console.log(dataInput);
 
- dataInput.forEach(input=>{
+ dataInput.forEach((input,i)=>{
+    
     input.addEventListener('input',()=>{
-        if (input.value !== null) {
+        console.log(input.value);
+        
+        if (input.value!=='') {
             document.querySelector(`#card-${input.name}`).textContent = input.value;
         }
     })
-    input.addEventListener('blur',()=>{
+ })
+ 
+ const selectInputs=document.querySelectorAll('input[role="combobox"]');
+
+selectInputs.forEach(item=>{
+    item.addEventListener('blur',()=>{
         const leaugeImg=document.querySelector('.leaugeImg');
         const leagueLogo=document.getElementById('leagueLogo');
-        let leagueSrc=leaugeImg.getAttribute('src')
-        if(leagueSrc!=null){
-        leagueLogo.setAttribute('src',`${leagueSrc}`)
-    }
+    let leagueSrc=leaugeImg.getAttribute('src')
+    leagueLogo.setAttribute('src',`${leagueSrc}`)
+       
         const NationImg=document.querySelector('.NationImg');
         const NatioFlag=document.getElementById('NatioFlag');
         let NationSrc=NationImg.getAttribute('src');
@@ -194,19 +202,15 @@ const dataInput=Array.from(document.querySelectorAll('input'));
         let CardSrc=CardImg.getAttribute('src');
         cardBG.setAttribute('src',`${CardSrc}`);
         
-        const ClubImg=document.querySelector('ClubImg');
+        const ClubImg=document.querySelector('.ClubImg');
         const teamLogo=document.getElementById('teamLogo');
-        
-        
-        let clubSrc=ClubImg.getAttribute('src');
-        console.log(clubSrc);
-        
-        // teamLogo.setAttribute('src',`${clubSrc}`);
+        let ClubSrc=ClubImg.getAttribute('src');
+        teamLogo.setAttribute('src',`${ClubSrc}`);
     })
- })
- 
- 
- 
- 
- 
+
+})
+
+const selectPost=document.getElementById('football-positions')
+console.log(selectPost);
+
 

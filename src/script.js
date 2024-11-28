@@ -211,6 +211,70 @@ selectInputs.forEach(item=>{
 })
 
 const selectPost=document.getElementById('football-positions')
-console.log(selectPost);
+selectPost.addEventListener('change',()=>{
+    const post=document.getElementById('post');
+    post.textContent=`${selectPost.value}`
+    const Spans=document.querySelectorAll('.cStats');
+    console.log(Spans);
+    
+    const statslabels=document.querySelectorAll('.stats');
+    console.log(statslabels);
+    if(selectPost.value=='GK'){
+        
+        
+                statslabels[0].textContent='DIV';
+                Spans[0].textContent='DIV';
+
+                statslabels[1].textContent='HAN';
+                Spans[1].textContent='REF';
+
+                statslabels[2].textContent='KIC';
+                 Spans[2].textContent='HAN';
+
+                statslabels[3].textContent='REF';
+                Spans[3].textContent='SPD';
+
+                statslabels[4].textContent='SPD';
+                Spans[4].textContent='KIC';
+
+                statslabels[5].textContent='POS';
+                 Spans[5].textContent='POS';
+                
+                
+                
+
+            }else{
+                statslabels[0].textContent='PAC';
+                Spans[0].textContent='PAC';
+
+                statslabels[1].textContent='PAS';
+                Spans[1].textContent='SHO';
+
+                statslabels[2].textContent='DEF';
+                 Spans[2].textContent='PAS';
+
+                statslabels[3].textContent='SHO';
+                Spans[3].textContent='DRI';
+
+                statslabels[4].textContent='DRI';
+                Spans[4].textContent='DEF';
+
+                statslabels[5].textContent='PHY'   ;
+                 Spans[5].textContent='PHY';
+            }
+            
+        
+        
+    
+    
+})
+
+const imgInput=document.querySelector('input[name="img"]');
+const player_img=document.getElementById("player_img");
+imgInput.addEventListener('input',()=>{
+    player_img.setAttribute('src',`${imgInput.value}`);
+})
+
+
 
 

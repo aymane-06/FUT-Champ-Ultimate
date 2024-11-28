@@ -150,6 +150,7 @@
             <label for="football-positions" class="text-white">Player Position<br>
             <select name="positions" id="football-positions" class="w-[300px] text-white flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
             </label>
+            <option value="" selected>Pick Position</option>
                 <!-- Goalkeeper -->
   <option value="GK">Goalkeeper (GK)</option>
 
@@ -201,22 +202,22 @@
 </div>
 <h1 class="text-white text-center" >Player Stats</h1>
 <div class="flex gap-8">
-    <label for="PAC" class="text-white">PAC:<br>
+    <label for="PAC" class="text-white "><span class="stats">PAC:</span><br>
         <input type="number"name="pac" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]" >
     </label>
-    <label for="PAS" class="text-white">PAS:<br>
+    <label for="PAS" class="text-white "><span class="stats">PAS:</span><br>
         <input type="number" name="pas" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
     </label>
-    <label for="DEF" class="text-white">DEF:<br>
+    <label for="DEF" class="text-white "><span class="stats">DEF:</span><br>
         <input type="number" name="def" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
     </label>
-    <label for="SHO" class="text-white">SHO:<br>
+    <label for="SHO" class="text-white "><span class="stats">SHO:</span><br>
         <input type="number" name="sho" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
     </label>
-    <label for="DRI" class="text-white">DRI:<br>
+    <label for="DRI" class="text-white "><span class="stats">DRI:</span><br>
         <input type="number" name="dri" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
     </label>
-    <label for="PHY" class="text-white">PHY:<br>
+    <label for="PHY" class="text-white "><span class="stats">PHY:</span><br>
         <input type="number" name="phy" min="30" max="99" step="1" class=" flex bg-[#1e1e1e] border-white h-[35.6px] font-sans rounded-[3px] border-solid border-[1px]">
     </label>
 </div>
@@ -230,34 +231,34 @@
                     <h1 class=" text-[#fff] " id="post">-</h1>
                 </div>
                 <div  class="absolute w-[80%] top-[40px] right-[14px]">
-                    <img class="w-full" id="player_img" src="https://cdn3.futbin.com/content/fifa25/img/players/p67266887.png?fm=png&ixlib=java-2.1.0&verzion=1&w=485&s=ac939a25dd889c2cf50ebc5548e60369" alt="">
+                    <img class="w-full" id="player_img" src="https://cdn.pixabay.com/photo/2014/04/02/10/25/man-303792_1280.png" alt="">
                 </div>
                 <div class="absolute bottom-[130px] left-[80px] text-[30px]">
                     <h1 id="card-name" >Messi</h1>
                 </div>
                 <div id="stats" class="absolute text-white flex gap-1 bottom-20 left-[38px]"> 
                     <div>
-                    <span class="font-sans">PAC</span>  
+                    <span id="c-PAC" class="font-sans cStats">PAC</span>  
                     <div id="card-pac">-</div>
                 </div>
                 <div>
-                    <span class="font-sans">SHO</span>  
+                    <span id="c-SHO" class="font-sans cStats">SHO</span>  
                     <div id="card-sho">-</div>
                 </div>
                 <div>
-                    <span class="font-sans">PAS</span>  
+                    <span id="c-PAS" class="font-sans cStats">PAS</span>  
                     <div id="card-pas">-</div>
                 </div>
                 <div>
-                    <span class="font-sans">DRI</span>  
+                    <span id="c-DRI" class="font-sans cStats">DRI</span>   
                     <div id="card-dri">-</div>
                 </div>
                 <div>
-                    <span class="font-sans">DEF</span>  
+                    <span id="c-DEF" class="font-sans cStats">DEF</span>  
                     <div id="card-def">-</div>
                 </div>
                 <div>
-                    <span class="font-sans">PHY</span>  
+                    <span id="c-PHY" class="font-sans cStats">PHY</span>  
                     <div id="card-phy">-</div>
                 </div>
             </div>

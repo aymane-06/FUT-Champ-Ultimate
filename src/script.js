@@ -1,5 +1,5 @@
 const FildPlayersCard=document.querySelectorAll('.player_card');
-
+function hovercard(){
 FildPlayersCard.forEach(playerCard=>{
     const bgImg=playerCard.querySelector('img');
     const type=playerCard.querySelector('.typ');
@@ -19,7 +19,10 @@ FildPlayersCard.forEach(playerCard=>{
     })
 
 })
+console.log('g');
 
+}
+hovercard();
 
 new TomSelect('#select-league',{
     valueField: 'img',
@@ -171,39 +174,44 @@ statsInp.forEach(inp=>{
 
 const dataInput=Array.from(document.querySelectorAll('input'));
 // console.log(dataInput);
-
- dataInput.forEach((input,i)=>{
-    
-    input.addEventListener('input',()=>{
-        console.log(input.value);
+const addPlayerSection = document.getElementById('add_player');
+function addPlayer(){
+    dataInput.forEach((input,i)=>{
         
-        if (input.value!=='') {
-            document.querySelector(`#card-${input.name}`).textContent = input.value;
-        }
+        input.addEventListener('input',()=>{
+            console.log(input.value);
+            
+            if (input.value!=='') {
+                addPlayerSection.querySelector(`#card-${input.name}`).textContent = input.value;
+            }
+        })
     })
- })
  
  const selectInputs=document.querySelectorAll('input[role="combobox"]');
 
 selectInputs.forEach(item=>{
     item.addEventListener('blur',()=>{
         const leaugeImg=document.querySelector('.leaugeImg');
-        const leagueLogo=document.getElementById('leagueLogo');
+        const leagueLogo=addPlayerSection.querySelector('#leagueLogo');
+        console.log(leagueLogo);
     let leagueSrc=leaugeImg.getAttribute('src')
     leagueLogo.setAttribute('src',`${leagueSrc}`)
        
         const NationImg=document.querySelector('.NationImg');
-        const NatioFlag=document.getElementById('NatioFlag');
+        const NatioFlag=addPlayerSection.querySelector('#NatioFlag');
+        // console.log(NatioFlag);
         let NationSrc=NationImg.getAttribute('src');
         NatioFlag.setAttribute('src',`${NationSrc}`);
 
         const CardImg=document.querySelector('.CardImg');
-        const cardBG=document.getElementById('cardBG');
+        const cardBG=addPlayerSection.querySelector('#cardBG');
+        console.log(cardBG);
+        
         let CardSrc=CardImg.getAttribute('src');
         cardBG.setAttribute('src',`${CardSrc}`);
         
         const ClubImg=document.querySelector('.ClubImg');
-        const teamLogo=document.getElementById('teamLogo');
+        const teamLogo=addPlayerSection.querySelector('#teamLogo');
         let ClubSrc=ClubImg.getAttribute('src');
         teamLogo.setAttribute('src',`${ClubSrc}`);
     })
@@ -212,7 +220,7 @@ selectInputs.forEach(item=>{
 
 const selectPost=document.getElementById('football-positions')
 selectPost.addEventListener('change',()=>{
-    const post=document.getElementById('post');
+    const post=addPlayerSection.querySelector('#post');
     post.textContent=`${selectPost.value}`
     const Spans=document.querySelectorAll('.cStats');
     console.log(Spans);
@@ -270,11 +278,47 @@ selectPost.addEventListener('change',()=>{
 })
 
 const imgInput=document.querySelector('input[name="img"]');
-const player_img=document.getElementById("player_img");
+const player_img=addPlayerSection.querySelector("#player_img");
+// console.log(player_img);
+
 imgInput.addEventListener('input',()=>{
     player_img.setAttribute('src',`${imgInput.value}`);
 })
 
+}
+addPlayer();
 
 
 
+const addButton=document.getElementById('btn');
+const cardTemplate=document.getElementById('cardTemplate');
+const players_sub=document.getElementById('players_sub');
+const data_container=document.getElementById('data_container');
+const form=document.getElementById('form')
+let cardclone;
+
+addButton.addEventListener('click',()=>{
+    if(dataInput[0].value&&dataInput[1].value&&dataInput[6].value&&dataInput[7].value&&dataInput[8].value&&dataInput[9].value&&dataInput[10].value&&dataInput[11].value){
+    cardclone=cardTemplate.cloneNode(true);
+    cardclone.style.width='50%';
+    const dataContainer = cardclone.querySelector('.data_container');
+    dataContainer.style.gap='120px';
+    hovercard();
+    players_sub.appendChild(cardclone);
+    form.reset();
+    addPlayer();
+}
+})
+
+
+
+const colorInput=document.getElementById('colorInput');
+const CardText=addPlayerSection.querySelectorAll('.color');
+console.log(CardText);
+
+colorInput.addEventListener('input',()=>{
+    console.log(colorInput.value);
+    CardText.forEach(text=>{
+        text.style.color=`${colorInput.value}`;
+    })
+})

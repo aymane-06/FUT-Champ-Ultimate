@@ -618,10 +618,6 @@ video {
   top: 40px;
 }
 
-.top-\[75px\] {
-  top: 75px;
-}
-
 .top-\[7px\] {
   top: 7px;
 }
@@ -710,8 +706,8 @@ video {
   height: 99%;
 }
 
-.h-full {
-  height: 100%;
+.h-auto {
+  height: auto;
 }
 
 .min-h-screen {
@@ -774,6 +770,10 @@ video {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .items-center {
   align-items: center;
 }
@@ -816,6 +816,10 @@ video {
 
 .gap-\[80px\] {
   gap: 80px;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
 }
 
 .text-ellipsis {
@@ -932,6 +936,14 @@ video {
 
 .text-\[30px\] {
   font-size: 30px;
+}
+
+.text-\[2em\] {
+  font-size: 2em;
+}
+
+.text-\[1em\] {
+  font-size: 1em;
 }
 
 .text-\[\#07D95A\] {

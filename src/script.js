@@ -175,6 +175,7 @@ statsInp.forEach(inp=>{
 const dataInput=Array.from(document.querySelectorAll('input'));
 // console.log(dataInput);
 const addPlayerSection = document.getElementById('add_player');
+const selectInputs=document.querySelectorAll('input[role="combobox"]');
 function addPlayer(){
     dataInput.forEach((input,i)=>{
         
@@ -187,7 +188,7 @@ function addPlayer(){
         })
     })
  
- const selectInputs=document.querySelectorAll('input[role="combobox"]');
+
 
 selectInputs.forEach(item=>{
     item.addEventListener('blur',()=>{
@@ -218,7 +219,7 @@ selectInputs.forEach(item=>{
 
 })
 
-const selectPost=document.getElementById('football-positions')
+const selectPost=document.getElementById('football-positions');
 selectPost.addEventListener('change',()=>{
     const post=addPlayerSection.querySelector('#post');
     post.textContent=`${selectPost.value}`
@@ -291,54 +292,149 @@ addPlayer();
 
 
 const addButton=document.getElementById('btn');
-const cardTemplate=document.getElementById('cardTemplate');
+const cardTemplate=addPlayerSection.querySelector('#cardTemplate');
+// console.log(cardTemplate);
+
 const players_sub=document.getElementById('players_sub');
 const data_container=document.getElementById('data_container');
 const form=document.getElementById('form');
+const ShowCard=document.getElementById('cardplace')
 
-let cardStorg=[];
-cardStorg=JSON.parse(localStorage.getItem('storg'));
+let cardStorg=JSON.parse(localStorage.getItem('storg'))||[];
 function ShowCards() {
     cardStorg.forEach(cardHtml => {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = cardHtml;
         const showCard = tempDiv.firstChild;
+        showCard.style.width='38%'
         players_sub.appendChild(showCard);
     });
 }
 ShowCards();
 let cardclone;
+let CleanCard=cardTemplate.cloneNode(true);
+// console.log(CleanCard);
 
-addButton.addEventListener('click',()=>{
-    if(dataInput[0].value&&dataInput[1].value&&dataInput[6].value&&dataInput[7].value&&dataInput[8].value&&dataInput[9].value&&dataInput[10].value&&dataInput[11].value){
-    cardclone=cardTemplate.cloneNode(true);
-    cardclone.style.width='38%';
-    const dataContainer = cardclone.querySelector('.data_container');
-    dataContainer.style.gap='86px';
-    cardclone.querySelector('.rating').style.cssText='top: 55px; right: 47px;';
-    cardclone.querySelector('#card-name').style.cssText='font-size:20px;';
-    cardclone.querySelector('#stats').style.cssText='font-size:11px;';
-    hovercard();
-    players_sub.appendChild(cardclone);
-    form.reset();
-    addPlayer();
-    cardStorg.push(cardclone.outerHTML);
-    console.log(cardStorg);
+
+// addButton.addEventListener('click',()=>{
+//     if(dataInput[0].value&&dataInput[1].value&&dataInput[6].value&&dataInput[7].value&&dataInput[8].value&&dataInput[9].value&&dataInput[10].value&&dataInput[11].value){
+//     cardclone=cardTemplate.cloneNode(true);
+//     cardclone.style.width='38%';
+//     const dataContainer = cardclone.querySelector('.data_container');
+//     dataContainer.style.gap='86px';
+//     cardclone.querySelector('.rating').style.cssText='top: 55px; right: 47px;';
+//     cardclone.querySelector('#card-name').style.cssText='font-size:20px;';
+//     cardclone.querySelector('#stats').style.cssText='font-size:11px;';
+//     hovercard();
+//     players_sub.appendChild(cardclone);
+//     form.reset();
+//     const item=addPlayerSection.querySelectorAll(".item");
+//     item.forEach(it=>{
+//         it.remove();
+//     });
+//     addPlayer();
+
+//     cardStorg.push(cardclone.outerHTML);
+
+//     cardTemplate.remove();
+//     ShowCard.appendChild(CleanCard);
+//     // console.log(cardStorg);
     
-    localStorage.setItem('storg',JSON.stringify(cardStorg));
-    
-}
-})
+//     localStorage.setItem('storg',JSON.stringify(cardStorg));
+//     colorChanger();
+//     CloseAdd_playerSection();
+// }
+// })
 
 
 
-const colorInput=document.getElementById('colorInput');
-const CardText=addPlayerSection.querySelectorAll('.color');
+
 // console.log(CardText);
-
+function colorChanger(){
+    const colorInput=document.getElementById('colorInput');
+const CardText=addPlayerSection.querySelectorAll('.color');
 colorInput.addEventListener('input',()=>{
     // console.log(colorInput.value);
     CardText.forEach(text=>{
+        console.log(text);
+        
         text.style.color=`${colorInput.value}`;
     })
+})
+}
+colorChanger();
+
+
+function ShowAdd_playerSection() {
+    addPlayerSection.classList.remove('hidden');
+    addPlayerSection.classList.add('flex');
+}
+
+function CloseAdd_playerSection(){ 
+    addPlayerSection.classList.remove('flex');
+    addPlayerSection.classList.add('hidden');
+}
+
+
+// card filde fill up:
+
+const filde=document.getElementById('filde');
+const cardsFild=filde.querySelectorAll('.player_card');
+// console.log(cardsFild);
+
+console.log(addButton);
+
+function GenerateCard(div,width){
+    cardsFild.forEach(card=>{
+        
+            addButton.addEventListener('click',()=>{
+                if(dataInput[0].value&&dataInput[1].value&&dataInput[6].value&&dataInput[7].value&&dataInput[8].value&&dataInput[9].value&&dataInput[10].value&&dataInput[11].value){
+                cardclone=cardTemplate.cloneNode(true);
+                cardclone.style.width=`${width}%`;
+                const dataContainer = cardclone.querySelector('.data_container');
+                dataContainer.style.gap='86px';
+                cardclone.querySelector('.rating').style.cssText='top: 55px; right: 47px;';
+                cardclone.querySelector('#card-name').style.cssText='font-size:20px;';
+                cardclone.querySelector('#stats').style.cssText='font-size:11px;';
+                hovercard();
+                div.appendChild(cardclone);
+                form.reset();
+                const item=addPlayerSection.querySelectorAll(".item");
+                item.forEach(it=>{
+                    it.innerHTML='';
+                });
+                addPlayer();
+            
+                cardStorg.push(cardclone.outerHTML);
+            
+                cardTemplate.remove();
+                ShowCard.appendChild(CleanCard);
+                // console.log(cardStorg);
+                
+                localStorage.setItem('storg',JSON.stringify(cardStorg));
+                colorChanger();
+                CloseAdd_playerSection();
+            }
+            })
+        })
+}
+cardsFild.forEach(card=>{
+card.addEventListener('click',(event)=>{
+    card.innerHTML='';
+    card.style.cssText='z-index:0;';
+    ShowAdd_playerSection();
+    const selectedCard=event.currentTarget;
+    console.log(selectedCard);
+    
+    GenerateCard(selectedCard,100);
+
+
+})
+})
+
+
+const addPlayerBtn=document.getElementById('addPlayerBtn');
+addPlayerBtn.addEventListener('click',()=>{
+    ShowAdd_playerSection();
+    GenerateCard(players_sub,38);
 })

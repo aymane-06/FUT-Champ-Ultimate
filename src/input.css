@@ -27,3 +27,9 @@
         color: #495c68 !important;
     
 } 
+.ts-control{
+    height: 35.6px;
+}
+.player_card{
+    cursor: pointer;
+}

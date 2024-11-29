@@ -19,7 +19,7 @@ FildPlayersCard.forEach(playerCard=>{
     })
 
 })
-console.log('g');
+// console.log('g');
 
 }
 hovercard();
@@ -34,7 +34,7 @@ new TomSelect('#select-league',{
             .then(response => response.json())
             .then(json => {
                 callback(json);
-                console.log(json);
+                // console.log(json);
             }).catch(()=>{
                 callback();
             });
@@ -66,7 +66,7 @@ new TomSelect('#select-nation',{
             .then(response => response.json())
             .then(json => {
                 callback(json);
-                console.log(json);
+                // console.log(json);
             }).catch(()=>{
                 callback();
             });
@@ -99,7 +99,7 @@ new TomSelect('#select-version',{
             .then(response => response.json())
             .then(json => {
                 callback(json);
-                console.log(json);
+                // console.log(json);
             }).catch(()=>{
                 callback();
             });
@@ -131,7 +131,7 @@ new TomSelect('#select-club',{
             .then(response => response.json())
             .then(json => {
                 callback(json);
-                console.log(json);
+                // console.log(json);
             }).catch(()=>{
                 callback();
             });
@@ -179,7 +179,7 @@ function addPlayer(){
     dataInput.forEach((input,i)=>{
         
         input.addEventListener('input',()=>{
-            console.log(input.value);
+            // console.log(input.value);
             
             if (input.value!=='') {
                 addPlayerSection.querySelector(`#card-${input.name}`).textContent = input.value;
@@ -193,7 +193,7 @@ selectInputs.forEach(item=>{
     item.addEventListener('blur',()=>{
         const leaugeImg=document.querySelector('.leaugeImg');
         const leagueLogo=addPlayerSection.querySelector('#leagueLogo');
-        console.log(leagueLogo);
+        // console.log(leagueLogo);
     let leagueSrc=leaugeImg.getAttribute('src')
     leagueLogo.setAttribute('src',`${leagueSrc}`)
        
@@ -205,7 +205,7 @@ selectInputs.forEach(item=>{
 
         const CardImg=document.querySelector('.CardImg');
         const cardBG=addPlayerSection.querySelector('#cardBG');
-        console.log(cardBG);
+        // console.log(cardBG);
         
         let CardSrc=CardImg.getAttribute('src');
         cardBG.setAttribute('src',`${CardSrc}`);
@@ -222,11 +222,11 @@ const selectPost=document.getElementById('football-positions')
 selectPost.addEventListener('change',()=>{
     const post=addPlayerSection.querySelector('#post');
     post.textContent=`${selectPost.value}`
-    const Spans=document.querySelectorAll('.cStats');
-    console.log(Spans);
+    const Spans=addPlayerSection.querySelectorAll('.cStats');
+    // console.log(Spans);
     
     const statslabels=document.querySelectorAll('.stats');
-    console.log(statslabels);
+    // console.log(statslabels);
     if(selectPost.value=='GK'){
         
         
@@ -294,19 +294,39 @@ const addButton=document.getElementById('btn');
 const cardTemplate=document.getElementById('cardTemplate');
 const players_sub=document.getElementById('players_sub');
 const data_container=document.getElementById('data_container');
-const form=document.getElementById('form')
+const form=document.getElementById('form');
+
+let cardStorg=[];
+cardStorg=JSON.parse(localStorage.getItem('storg'));
+function ShowCards() {
+    cardStorg.forEach(cardHtml => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = cardHtml;
+        const showCard = tempDiv.firstChild;
+        players_sub.appendChild(showCard);
+    });
+}
+ShowCards();
 let cardclone;
 
 addButton.addEventListener('click',()=>{
     if(dataInput[0].value&&dataInput[1].value&&dataInput[6].value&&dataInput[7].value&&dataInput[8].value&&dataInput[9].value&&dataInput[10].value&&dataInput[11].value){
     cardclone=cardTemplate.cloneNode(true);
-    cardclone.style.width='50%';
+    cardclone.style.width='38%';
     const dataContainer = cardclone.querySelector('.data_container');
-    dataContainer.style.gap='120px';
+    dataContainer.style.gap='86px';
+    cardclone.querySelector('.rating').style.cssText='top: 55px; right: 47px;';
+    cardclone.querySelector('#card-name').style.cssText='font-size:20px;';
+    cardclone.querySelector('#stats').style.cssText='font-size:11px;';
     hovercard();
     players_sub.appendChild(cardclone);
     form.reset();
     addPlayer();
+    cardStorg.push(cardclone.outerHTML);
+    console.log(cardStorg);
+    
+    localStorage.setItem('storg',JSON.stringify(cardStorg));
+    
 }
 })
 
@@ -314,10 +334,10 @@ addButton.addEventListener('click',()=>{
 
 const colorInput=document.getElementById('colorInput');
 const CardText=addPlayerSection.querySelectorAll('.color');
-console.log(CardText);
+// console.log(CardText);
 
 colorInput.addEventListener('input',()=>{
-    console.log(colorInput.value);
+    // console.log(colorInput.value);
     CardText.forEach(text=>{
         text.style.color=`${colorInput.value}`;
     })

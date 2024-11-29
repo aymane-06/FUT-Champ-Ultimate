@@ -706,10 +706,6 @@ video {
   height: 99%;
 }
 
-.h-auto {
-  height: auto;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -934,16 +930,12 @@ video {
   font-size: 20px;
 }
 
-.text-\[30px\] {
-  font-size: 30px;
-}
-
 .text-\[2em\] {
   font-size: 2em;
 }
 
-.text-\[1em\] {
-  font-size: 1em;
+.text-\[30px\] {
+  font-size: 30px;
 }
 
 .text-\[\#07D95A\] {

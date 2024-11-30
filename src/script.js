@@ -320,6 +320,7 @@ function ShowCards() {
             cardsFild[i].appendChild(showCard);
             playerInFild++;
         } else {
+            ShowCard.style.margin='0px'
             showCard.style.width='38%'
             players_sub.appendChild(showCard);
         }

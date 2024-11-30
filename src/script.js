@@ -301,15 +301,34 @@ const form=document.getElementById('form');
 const ShowCard=document.getElementById('cardplace')
 
 let cardStorg=JSON.parse(localStorage.getItem('storg'))||[];
+console.log(cardStorg.length);
+
+let playerInFild=0;
+
+const filde=document.getElementById('filde');
+const cardsFild=filde.querySelectorAll('.player_card');
 function ShowCards() {
-    cardStorg.forEach(cardHtml => {
+    for(let i = 0; i < cardStorg.length; i++) {
         const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = cardHtml;
+        tempDiv.innerHTML = cardStorg[i];
+        
         const showCard = tempDiv.firstChild;
-        showCard.style.width='38%'
-        players_sub.appendChild(showCard);
-    });
+        showCard.style.width = '135%';
+        
+        if (playerInFild < 11 && cardsFild[i]) {
+            cardsFild[i].innerHTML = '';
+            cardsFild[i].appendChild(showCard);
+            playerInFild++;
+        } else {
+            showCard.style.width='38%'
+            players_sub.appendChild(showCard);
+        }
+        
+        hovercard();
+    }
 }
+
+
 ShowCards();
 let cardclone;
 let CleanCard=cardTemplate.cloneNode(true);
@@ -378,16 +397,14 @@ function CloseAdd_playerSection(){
 
 // card filde fill up:
 
-const filde=document.getElementById('filde');
-const cardsFild=filde.querySelectorAll('.player_card');
-// console.log(cardsFild);
+console.log(cardsFild);
 
 // console.log(addButton);
 
 // Define generateCardonclick OUTSIDE the GenerateCard function
 let currentTargetDiv = null;
 let currentWidth = null;
-
+const clearcrad=0;
 function generateCardonclick() {
     if (dataInput[0].value && dataInput[1].value && dataInput[6].value && 
         dataInput[7].value && dataInput[8].value && dataInput[9].value && 
@@ -403,6 +420,9 @@ function generateCardonclick() {
         cardclone.querySelector('#stats').style.cssText = 'font-size:11px;';
         
         hovercard();
+        if(currentTargetDiv==selectedCard){
+            currentTargetDiv.innerHTML = '';
+        }
         currentTargetDiv.appendChild(cardclone);
         form.reset();
         
@@ -413,12 +433,14 @@ function generateCardonclick() {
         
         addPlayer();
         cardStorg.push(cardclone.outerHTML);
-        cardTemplate.remove();
-        ShowCard.appendChild(CleanCard);
+        // cardTemplate.remove();
+        // ShowCard.appendChild(CleanCard);
         
         localStorage.setItem('storg', JSON.stringify(cardStorg));
         colorChanger();
         CloseAdd_playerSection();
+        hovercard();
+        clearcrad++
     }
 }
 
@@ -433,13 +455,17 @@ function GenerateCard(div, width) {
     currentTargetDiv = div;
     currentWidth = width;
 }
-
+let selectedCard;
 cardsFild.forEach(card => {
     card.addEventListener('click', (event) => {
-        card.innerHTML = '';
         card.style.cssText = 'z-index:0;';
+        card.style.width='18%';
+        card.style.margin='0px'
         ShowAdd_playerSection();
-        GenerateCard(event.currentTarget, 100);
+        selectedCard=event.currentTarget;
+        GenerateCard(selectedCard, 100);
+        
+    
     });
 });
 

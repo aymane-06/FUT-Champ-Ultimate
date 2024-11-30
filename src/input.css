@@ -32,4 +32,14 @@
 }
 .player_card{
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.typ{
+    width: 100%;
+}
+#deffenc>.player_card{
+    margin: 0 14px;
 }

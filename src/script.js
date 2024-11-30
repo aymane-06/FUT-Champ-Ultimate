@@ -384,58 +384,68 @@ const cardsFild=filde.querySelectorAll('.player_card');
 
 // console.log(addButton);
 
-function GenerateCard(div,width){
-    console.log(div);
-            addButton.addEventListener('click',()=>{
-                if(dataInput[0].value&&dataInput[1].value&&dataInput[6].value&&dataInput[7].value&&dataInput[8].value&&dataInput[9].value&&dataInput[10].value&&dataInput[11].value){
-                cardclone=cardTemplate.cloneNode(true);
-                cardclone.style.width=`${width}%`;
-                const dataContainer = cardclone.querySelector('.data_container');
-                dataContainer.style.gap='86px';
-                cardclone.querySelector('.rating').style.cssText='top: 55px; right: 47px;';
-                cardclone.querySelector('#card-name').style.cssText='font-size:20px;';
-                cardclone.querySelector('#stats').style.cssText='font-size:11px;';
-                hovercard();
-                div.appendChild(cardclone);
-                form.reset();
-                const item=addPlayerSection.querySelectorAll(".item");
-                item.forEach(it=>{
-                    it.innerHTML='';
-                });
-                addPlayer();
-            
-                cardStorg.push(cardclone.outerHTML);
-            
-                cardTemplate.remove();
-                ShowCard.appendChild(CleanCard);
-                // console.log(cardStorg);
-                
-                localStorage.setItem('storg',JSON.stringify(cardStorg));
-                colorChanger();
-                CloseAdd_playerSection();
-            }
-            })
+// Define generateCardonclick OUTSIDE the GenerateCard function
+let currentTargetDiv = null;
+let currentWidth = null;
+
+function generateCardonclick() {
+    if (dataInput[0].value && dataInput[1].value && dataInput[6].value && 
+        dataInput[7].value && dataInput[8].value && dataInput[9].value && 
+        dataInput[10].value && dataInput[11].value) {
         
+        const cardclone = cardTemplate.cloneNode(true);
+        cardclone.style.width = `${currentWidth}%`;
+        
+        const dataContainer = cardclone.querySelector('.data_container');
+        dataContainer.style.gap = '86px';
+        cardclone.querySelector('.rating').style.cssText = 'top: 55px; right: 47px;';
+        cardclone.querySelector('#card-name').style.cssText = 'font-size:20px;';
+        cardclone.querySelector('#stats').style.cssText = 'font-size:11px;';
+        
+        hovercard();
+        currentTargetDiv.appendChild(cardclone);
+        form.reset();
+        
+        const item = addPlayerSection.querySelectorAll(".item");
+        item.forEach(it => {
+            it.innerHTML = '';
+        });
+        
+        addPlayer();
+        cardStorg.push(cardclone.outerHTML);
+        cardTemplate.remove();
+        ShowCard.appendChild(CleanCard);
+        
+        localStorage.setItem('storg', JSON.stringify(cardStorg));
+        colorChanger();
+        CloseAdd_playerSection();
+    }
 }
-cardsFild.forEach(card=>{
-card.addEventListener('click',(event)=>{
-    card.innerHTML='';
-    card.style.cssText='z-index:0;';
-    ShowAdd_playerSection();
-   
-    // console.log(selectedCard);
+
+// Remove previous listener and add new one
+addButton.removeEventListener('click', generateCardonclick);
+addButton.addEventListener('click', generateCardonclick);
+
+function GenerateCard(div, width) {
+    console.log(div);
     
-    GenerateCard(event.currentTarget,100);
+    // Update the current target div and width
+    currentTargetDiv = div;
+    currentWidth = width;
+}
 
+cardsFild.forEach(card => {
+    card.addEventListener('click', (event) => {
+        card.innerHTML = '';
+        card.style.cssText = 'z-index:0;';
+        ShowAdd_playerSection();
+        GenerateCard(event.currentTarget, 100);
+    });
+});
 
-})
-})
-
-
-const addPlayerBtn=document.getElementById('addPlayerBtn');
-addPlayerBtn.addEventListener('click',()=>{
+const addPlayerBtn = document.getElementById('addPlayerBtn');
+addPlayerBtn.addEventListener('click', () => {
     ShowAdd_playerSection();
-    GenerateCard(players_sub,38);
+    GenerateCard(players_sub, 38);
     console.log('in');
-    
-})
+});

@@ -382,11 +382,10 @@ const filde=document.getElementById('filde');
 const cardsFild=filde.querySelectorAll('.player_card');
 // console.log(cardsFild);
 
-console.log(addButton);
+// console.log(addButton);
 
 function GenerateCard(div,width){
-    cardsFild.forEach(card=>{
-        
+    console.log(div);
             addButton.addEventListener('click',()=>{
                 if(dataInput[0].value&&dataInput[1].value&&dataInput[6].value&&dataInput[7].value&&dataInput[8].value&&dataInput[9].value&&dataInput[10].value&&dataInput[11].value){
                 cardclone=cardTemplate.cloneNode(true);
@@ -416,17 +415,17 @@ function GenerateCard(div,width){
                 CloseAdd_playerSection();
             }
             })
-        })
+        
 }
 cardsFild.forEach(card=>{
 card.addEventListener('click',(event)=>{
     card.innerHTML='';
     card.style.cssText='z-index:0;';
     ShowAdd_playerSection();
-    const selectedCard=event.currentTarget;
-    console.log(selectedCard);
+   
+    // console.log(selectedCard);
     
-    GenerateCard(selectedCard,100);
+    GenerateCard(event.currentTarget,100);
 
 
 })
@@ -437,4 +436,6 @@ const addPlayerBtn=document.getElementById('addPlayerBtn');
 addPlayerBtn.addEventListener('click',()=>{
     ShowAdd_playerSection();
     GenerateCard(players_sub,38);
+    console.log('in');
+    
 })

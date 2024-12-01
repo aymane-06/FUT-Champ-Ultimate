@@ -111,9 +111,8 @@ function hovercard() {
         editButton.addEventListener('click', () => {
             // Open the add player section with current card's data
             ShowAdd_playerSection();
-            // if(checkClickingEvent){
-                
-            
+            checkClickingEvent=false;
+            cardContainer.parentNode.style.width='132%'
             // Collect data using textContent and getAttribute
             const cardData = {
                 name: card.querySelector('#card-name').textContent,
@@ -155,8 +154,10 @@ function hovercard() {
             });
             
             // Remove the original card from storage and DOM
+           
+
             removeCardFromStorage(cardContainer);
-        
+            
         
         });
         
@@ -189,6 +190,7 @@ function hovercard() {
 }
 
 function removeCardFromStorage(cardContainer) {
+    if(checkClickingEvent){
     // Find the card name to remove
     const cardName = cardContainer.querySelector('#card-name').textContent;
     
@@ -211,6 +213,7 @@ function removeCardFromStorage(cardContainer) {
     if (cardToRemove) {
         cardToRemove.remove();
     }
+}
 }
 function resetCardToDefault(cardContainer) {
     // Find the position type
@@ -637,6 +640,7 @@ function generateCardonclick() {
         if(currentTargetDiv==selectedCard){
             currentTargetDiv.innerHTML = '';
             selectedCard.style.width='18%';
+            checkClickingEvent=false;
             
             
         }

@@ -1,27 +1,240 @@
 const FildPlayersCard=document.querySelectorAll('.player_card');
-function hovercard(){
-FildPlayersCard.forEach(playerCard=>{
-    const bgImg=playerCard.querySelector('img');
-    const type=playerCard.querySelector('.typ');
-    playerCard.addEventListener('mouseenter',()=>{
-        playerCard.style.zIndex = '2';
-        playerCard.style.cursor = 'pointer';
-        bgImg.style.filter = 'drop-shadow(0px 0px 40px #417560)';
-        type.style.filter='drop-shadow(0px 10px #458ea9)';
+function hovercard() {
+    const FildPlayersCard = document.querySelectorAll('.player_card');
+    
+    FildPlayersCard.forEach(playerCard => {
+        const bgImg = playerCard.querySelector('img');
+        const type = playerCard.querySelector('.typ');
+        
+        playerCard.addEventListener('mouseenter', () => {
+            playerCard.style.zIndex = '2';
+            playerCard.style.cursor = 'pointer';
+            bgImg.style.filter = 'drop-shadow(0px 0px 40px #417560)';
+            type.style.filter = 'drop-shadow(0px 10px #458ea9)';
+        });
+        
+        playerCard.addEventListener('mouseleave', () => {
+            playerCard.style.zIndex = '0';
+            bgImg.style.filter = 'none';
+            type.style.filter = 'none';
+        });
+    });
+
+    // Add functionality for created cards
+    const createdCards = document.querySelectorAll('#players_sub .data_container, .player_card .data_container');
+    
+    createdCards.forEach(card => {
+        const cardContainer = card.closest('.player_card, .data_container');
+        // console.log(cardContainer);
+        
+        
+        // Create edit and delete buttons container
+        const editDeleteContainer = document.createElement('div');
+        editDeleteContainer.classList.add(
+            'edit-delete-container', 
+            'hidden', 
+            'absolute', 
+            'top-0', 
+            'right-0', 
+            'flex', 
+            'gap-2', 
+            'p-2', 
+            'z-50'
+        );
+        
+        // Create edit button
+        const editButton = document.createElement('button');
+        const editIcon = document.createElement('i');
+        editIcon.classList.add('fas', 'fa-edit', 'text-green-500');
+        editButton.appendChild(editIcon);
+        editButton.classList.add(
+            'edit-btn', 
+            'bg-white', 
+            'rounded-full', 
+            'p-2', 
+            'hover:bg-green-100', 
+            'z-50'
+        );
+        
+        // Create delete button
+        const deleteButton = document.createElement('button');
+        const deleteIcon = document.createElement('i');
+        deleteIcon.classList.add('fas', 'fa-trash', 'text-red-500');
+        deleteButton.appendChild(deleteIcon);
+        deleteButton.classList.add(
+            'delete-btn', 
+            'bg-white', 
+            'rounded-full', 
+            'p-2', 
+            'hover:bg-red-100', 
+            'z-50'
+        );
+        
+        editDeleteContainer.appendChild(editButton);
+        editDeleteContainer.appendChild(deleteButton);
+        
+        cardContainer.addEventListener('mouseenter', (e) => {
+            const bgImg = cardContainer.querySelector('img');
+            const type = cardContainer.querySelector('.typ');
+            
+            cardContainer.style.zIndex = '2';
+            cardContainer.style.cursor = 'pointer';
+            
+            if (bgImg) {
+                bgImg.style.filter = 'drop-shadow(0px 0px 40px #417560)';
+            }
+            
+            if (type) {
+                type.style.filter = 'drop-shadow(0px 10px #458ea9)';
+            }
+            
+            cardContainer.appendChild(editDeleteContainer);
+            editDeleteContainer.classList.remove('hidden');
+        });
+        
+        cardContainer.addEventListener('mouseleave', (e) => {
+            const bgImg = cardContainer.querySelector('img');
+            const type = cardContainer.querySelector('.typ');
+            
+            cardContainer.style.zIndex = '0';
+            
+                bgImg.style.filter = 'none';
+            
+                type.style.filter = 'none';
+            
+            
+            // Hide edit/delete buttons
+            editDeleteContainer.classList.add('hidden');
+        });
+        
+        // Edit button functionality
+        editButton.addEventListener('click', () => {
+            // Open the add player section with current card's data
+            ShowAdd_playerSection();
+            // if(checkClickingEvent){
+                
+            
+            // Collect data using textContent and getAttribute
+            const cardData = {
+                name: card.querySelector('#card-name').textContent,
+                position: card.querySelector('#post').textContent,
+                img: card.querySelector('#player_img').getAttribute('src'),
+                pac: card.querySelector('#card-pac').textContent,
+                sho: card.querySelector('#card-sho').textContent,
+                pas: card.querySelector('#card-pas').textContent,
+                dri: card.querySelector('#card-dri').textContent,
+                def: card.querySelector('#card-def').textContent,
+                phy: card.querySelector('#card-phy').textContent
+            };
+            
+            // Populate form inputs
+            document.querySelector('input[name="name"]').value = cardData.name;
+            
+            // Set position in select
+            const positionSelect = document.getElementById('football-positions');
+            Array.from(positionSelect.options).forEach(option => {
+                if (option.value === cardData.position) {
+                    positionSelect.value = option.value;
+                }
+            });
+            
+            document.querySelector('input[name="img"]').value = cardData.img;
+            
+            // Populate stats
+            document.querySelector('input[name="pac"]').value = cardData.pac;
+            document.querySelector('input[name="sho"]').value = cardData.sho;
+            document.querySelector('input[name="pas"]').value = cardData.pas;
+            document.querySelector('input[name="dri"]').value = cardData.dri;
+            document.querySelector('input[name="def"]').value = cardData.def;
+            document.querySelector('input[name="phy"]').value = cardData.phy;
+            
+            // Trigger any necessary updates
+            const statsInputs = document.querySelectorAll('input[type="number"]');
+            statsInputs.forEach(inp => {
+                inp.dispatchEvent(new Event('blur'));
+            });
+            
+            // Remove the original card from storage and DOM
+            removeCardFromStorage(cardContainer);
+        
+        
+        });
+        
+        deleteButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            console.log(cardContainer);
+            
+            const cardName = cardContainer.querySelector('#card-name').textContent;
+            
+            cardStorg = cardStorg.filter(cardHTML => {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = cardHTML;
+                const nameElement = tempDiv.querySelector('#card-name');
+                return nameElement && nameElement.textContent !== cardName;
+            });
+            
+            localStorage.setItem('storg', JSON.stringify(cardStorg));
+        
+            // Find if this card is in the field section
+            const fieldCard = cardContainer.closest('.player_card');
+            if (fieldCard) {
+                resetCardToDefault(fieldCard);
+            } else {
+                cardContainer.parentNode.remove();
+            }
+        });
         
 
-    })
-    playerCard.addEventListener('mouseleave',()=>{
-        playerCard.style.zIndex = '0';
-        bgImg.style.filter = 'none';
-        type.style.filter='none';
-       
-    })
-
-})
-// console.log('g');
-
+    });
 }
+
+function removeCardFromStorage(cardContainer) {
+    // Find the card name to remove
+    const cardName = cardContainer.querySelector('#card-name').textContent;
+    
+    // Filter out the card from storage
+    cardStorg = cardStorg.filter(cardHTML => {
+        // Create a temporary div to parse the HTML string
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = cardHTML;
+        
+        // Check if the name matches
+        const nameElement = tempDiv.querySelector('#card-name');
+        return nameElement && nameElement.textContent !== cardName;
+    });
+    
+    // Update localStorage
+    localStorage.setItem('storg', JSON.stringify(cardStorg));
+    
+    // Remove from DOM
+    const cardToRemove = cardContainer.closest('.player_card, .data_container');
+    if (cardToRemove) {
+        cardToRemove.remove();
+    }
+}
+function resetCardToDefault(cardContainer) {
+    // Find the position type
+    const positionType = cardContainer.querySelector('.typ').textContent;
+    
+    // Find the original placeholder card for this position
+    const originalPlaceholderCard = Array.from(document.querySelectorAll('.player_card'))
+        .find(card => 
+            card.querySelector('.typ').textContent === positionType && 
+            card.querySelector('#card-name') === null
+        );
+    
+    if (originalPlaceholderCard) {
+        // Clone the original placeholder
+        const placeholderClone = originalPlaceholderCard.cloneNode(true);
+        
+        // Replace the current card with the placeholder clone
+        cardContainer.parentNode.replaceChild(placeholderClone, cardContainer);
+        
+        // Re-apply hover effect
+        hovercard();
+    }
+}
+
 hovercard();
 
 new TomSelect('#select-league',{
@@ -301,7 +514,7 @@ const form=document.getElementById('form');
 const ShowCard=document.getElementById('cardplace')
 
 let cardStorg=JSON.parse(localStorage.getItem('storg'))||[];
-console.log(cardStorg.length);
+// console.log(cardStorg.length);
 
 let playerInFild=0;
 
@@ -398,7 +611,7 @@ function CloseAdd_playerSection(){
 
 // card filde fill up:
 
-console.log(cardsFild);
+// console.log(cardsFild);
 
 // console.log(addButton);
 
@@ -423,7 +636,11 @@ function generateCardonclick() {
         hovercard();
         if(currentTargetDiv==selectedCard){
             currentTargetDiv.innerHTML = '';
+            selectedCard.style.width='18%';
+            
+            
         }
+        checkClickingEvent=1;
         currentTargetDiv.appendChild(cardclone);
         form.reset();
         
@@ -442,6 +659,7 @@ function generateCardonclick() {
         CloseAdd_playerSection();
         hovercard();
         clearcrad++
+        return checkClickingEvent=true;
     }
 }
 
@@ -457,12 +675,13 @@ function GenerateCard(div, width) {
     currentWidth = width;
 }
 let selectedCard;
+let checkClickingEvent;
 cardsFild.forEach(card => {
     card.addEventListener('click', (event) => {
         card.style.cssText = 'z-index:0;';
-        card.style.width='18%';
-        card.style.margin='0px'
+        card.style.margin='0px';
         ShowAdd_playerSection();
+        checkClickingEvent=false
         selectedCard=event.currentTarget;
         GenerateCard(selectedCard, 100);
         
@@ -473,6 +692,7 @@ cardsFild.forEach(card => {
 const addPlayerBtn = document.getElementById('addPlayerBtn');
 addPlayerBtn.addEventListener('click', () => {
     ShowAdd_playerSection();
+    checkClickingEvent=false
     GenerateCard(players_sub, 38);
     console.log('in');
 });

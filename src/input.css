@@ -43,3 +43,237 @@
 #deffenc>.player_card{
     margin: 0 14px;
 }
+
+/* Tablets (iPad and similar tablets) */
+@media screen and (max-width: 1024px) {
+    body {
+        background-size: cover;
+    }
+
+    nav {
+        padding: 0 10px;
+        height: 50px;
+    }
+
+    nav ul {
+        width: 70%;
+        gap: 10px;
+    }
+
+    header {
+        margin: 50px 20px;
+        text-align: center;
+    }
+
+    #cardLogos{
+        width: 18px;
+        justify-content: center;
+    }
+    #players_cards{
+        gap: 50px;
+        top: -103px;
+        width: 100%;
+    }
+    #players_cards *{
+        justify-content: space-around;
+
+    }
+    #deffenc{
+        width: 132%;
+    }
+    #subtitul{
+        margin-top: 100px;
+        width: 90%;
+        height: 100dvh;
+    }
+    section.flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #filde {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #filde img {
+        width: 100%;
+        height: auto;
+    }
+
+    #players_cards {
+        transform: scale(0.8);
+    }
+
+    #players_sub {
+        width: 90%;
+        margin: 20px;
+        height: 500px;
+    }
+}
+
+/* Mobile Phones */
+@media screen and (max-width: 768px) {
+    body {
+        background-position: center top 30px;
+    }
+
+    nav {
+        height: 40px;
+    }
+    #cardLogos{
+        width: 18px;
+        justify-content: center;
+    }
+    #players_cards{
+        gap: 0px;
+        height: 100dvh;
+        width: 100%;
+        bottom: 0;
+        top: -78px;
+        justify-content: center;
+    }
+    #GP{
+        #cardLogos{
+        width: 18px;
+        justify-content: center;
+    }
+    #players_cards{
+        gap: 0px;
+        width: 100%;
+    }
+    #players_cards *{
+        /* justify-content: space-around; */
+
+    }
+
+    nav a img {
+        height: 25px;
+        width: 25px;
+    }
+
+    nav ul {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    #filde {
+        padding: 10px;
+        width: 100%;
+    }
+    #cardLogos{
+        width: 18px;
+        justify-content: center;
+    }
+    /* #players_cards{
+        gap: 50px;
+        height: 100dvh;
+        width: 100%;
+        bottom: 0;
+        top: 0;
+        justify-content: center;
+    } */
+    #deffenc{
+        width: 118%;
+    }
+    #GP{
+        #cardLogos{
+        width: 18px;
+        justify-content: center;
+    }
+    /* #players_cards{
+        gap: 50px;
+        top: -103px;
+        width: 100%;
+    } */
+    #players_cards *{
+        justify-content: space-around;
+
+    }
+    #subtitul{
+        margin-top: 100px;
+        width: 90%;
+        height: 100dvh;
+    }
+    #GP{
+        justify-content: center;
+    }
+    }
+    #players_cards *{
+        justify-content: space-between;
+
+    }
+    #subtitul{
+        margin-top: 100px;
+        width: 90%;
+        height: 100dvh;
+    }
+
+    #players_cards {
+        transform: scale(0.6);
+        margin: -100px 0;
+    }
+
+    #attack, #mid, #deffenc {
+        gap: 20px;
+    }
+
+    .player_card {
+        width: 100px;
+        height: 150px;
+    }
+
+    #players_sub {
+        height: 300px;
+    }
+
+    #add_player {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    #form {
+        width: 100%;
+        margin: 10px;
+    }
+
+    #form .flex {
+        flex-direction: column;
+    }
+
+    #form label, #form input, #form select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #ShowCard {
+        width: 200px;
+        transform: scale(0.7);
+    }
+}
+}
+/* Small Mobile Phones */
+@media screen and (max-width: 480px) {
+    #players_cards {
+        transform: scale(0.5);
+        margin: -150px 0;
+        
+    }
+
+    .player_card {
+        width: 100%;
+        height: 120px;
+    }
+
+    #ShowCard {
+        width: 150px;
+        transform: scale(0.6);
+    }
+
+    nav ul button {
+        font-size: 12px;
+    }
+    #deffenc{
+        width: 132%;
+    }
+}

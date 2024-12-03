@@ -9,12 +9,15 @@ function hovercard() {
         playerCard.addEventListener('mouseenter', () => {
             playerCard.style.zIndex = '2';
             playerCard.style.cursor = 'pointer';
+            playerCard.style.scale = '1.1';
             bgImg.style.filter = 'drop-shadow(0px 0px 40px #417560)';
             type.style.filter = 'drop-shadow(0px 10px #458ea9)';
+            
         });
         
         playerCard.addEventListener('mouseleave', () => {
             playerCard.style.zIndex = '0';
+            playerCard.style.scale = '1';
             bgImg.style.filter = 'none';
             type.style.filter = 'none';
         });
@@ -110,6 +113,8 @@ function hovercard() {
         // Edit button functionality
         editButton.addEventListener('click', () => {
             // Open the add player section with current card's data
+            // console.log(cardContainer);
+            
             ShowAdd_playerSection();
             checkClickingEvent=false;
             cardContainer.parentNode.style.width='132%'
@@ -125,9 +130,10 @@ function hovercard() {
                 def: card.querySelector('#card-def').textContent,
                 phy: card.querySelector('#card-phy').textContent
             };
+            // console.log(cardData);
             
             // Populate form inputs
-            document.querySelector('input[name="name"]').value = cardData.name;
+            document.querySelector('input[placeholder="Player Name"]').value = cardData.name;
             
             // Set position in select
             const positionSelect = document.getElementById('football-positions');
@@ -158,11 +164,15 @@ function hovercard() {
 
             removeCardFromStorage(cardContainer);
             
-        
+            cardOnClick();
         });
         
         deleteButton.addEventListener('click', (event) => {
+            const deletConfirmation= confirm('The player will be deleted!!!');
+            // console.log(deletConfirmation);
+            
             event.stopPropagation();
+            if(deletConfirmation){
             console.log(cardContainer);
             
             const cardName = cardContainer.querySelector('#card-name').textContent;
@@ -183,14 +193,13 @@ function hovercard() {
             } else {
                 cardContainer.parentNode.remove();
             }
-        });
+        }else{return} });
         
 
     });
 }
 
 function removeCardFromStorage(cardContainer) {
-    if(checkClickingEvent){
     // Find the card name to remove
     const cardName = cardContainer.querySelector('#card-name').textContent;
     
@@ -211,10 +220,16 @@ function removeCardFromStorage(cardContainer) {
     // Remove from DOM
     const cardToRemove = cardContainer.closest('.player_card, .data_container');
     if (cardToRemove) {
-        cardToRemove.remove();
+        // If the card is in the field, reset to placeholder
+        const fieldCard = cardToRemove.closest('.player_card');
+        if (fieldCard) {
+            resetCardToDefault(fieldCard);
+        } else {
+            cardToRemove.remove();
+        }
     }
 }
-}
+
 function resetCardToDefault(cardContainer) {
     // Find the position type
     const positionType = cardContainer.querySelector('.typ').textContent;
@@ -235,6 +250,7 @@ function resetCardToDefault(cardContainer) {
         
         // Re-apply hover effect
         hovercard();
+        // window.location.reload();  
     }
 }
 
@@ -268,6 +284,40 @@ new TomSelect('#select-league',{
             return `<div class="flex " style="display: flex;align-items: center;">
                     <img src="${item.img}" alt="" class="w-[20px] h-[20px] leaugeImg" >
                     <span>${item.name}</span>
+                    </div>`;
+        }
+    },
+});
+
+new TomSelect('#select-Name',{
+    create: true,
+    valueField: 'img',
+    labelField: 'name',
+    searchField: 'name',
+    // fetch remote data
+    load: function(query, callback) {
+        fetch("./updated_merge.json")
+            .then(response => response.json())
+            .then(json => {
+                callback(json);
+                // console.log(json);
+            }).catch(()=>{
+                callback();
+            });
+
+    },
+    // custom rendering functions for options and items
+    render: {
+        option: function(item, escape) {
+            return `<div class="flex w-full clicked">
+                    <img src="${item.img}" alt="" class="w-[20px] h-[20px]" >
+                    <h1>${item.name}</h1>
+                    </div>`;
+        },
+        item: function(item, escape) {
+            return `<div class="flex " style="display: flex;align-items: center;">
+                    <img src="${item.img}" alt="" class="w-[20px] h-[20px] PlayerImg" >
+                    <span class="PName">${item.name}</span>
                     </div>`;
         }
     },
@@ -388,11 +438,14 @@ statsInp.forEach(inp=>{
     })
 })
 
-const dataInput=Array.from(document.querySelectorAll('input'));
-// console.log(dataInput);
 const addPlayerSection = document.getElementById('add_player');
 const selectInputs=document.querySelectorAll('input[role="combobox"]');
+console.log(selectInputs);
+
+const dataInput=Array.from(document.querySelectorAll('input'));
 function addPlayer(){
+// console.log(dataInput);
+
     dataInput.forEach((input,i)=>{
         
         input.addEventListener('input',()=>{
@@ -408,6 +461,20 @@ function addPlayer(){
 
 selectInputs.forEach(item=>{
     item.addEventListener('blur',()=>{
+        const PlayerImg=document.querySelector('.PlayerImg');
+        const CardplayerImage=addPlayerSection.querySelector('#player_img');
+        
+        let playerSrc=PlayerImg.getAttribute('src');
+        // console.log(playerSrc);
+        
+        CardplayerImage.setAttribute('src',`${playerSrc}`);
+
+        const playerName=document.querySelector('.PName');
+        const cardPlayerName=addPlayerSection.querySelector('#card-name');
+        cardPlayerName.textContent=playerName.textContent;
+
+
+
         const leaugeImg=document.querySelector('.leaugeImg');
         const leagueLogo=addPlayerSection.querySelector('#leagueLogo');
         // console.log(leagueLogo);
@@ -517,7 +584,7 @@ const form=document.getElementById('form');
 const ShowCard=document.getElementById('cardplace')
 
 let cardStorg=JSON.parse(localStorage.getItem('storg'))||[];
-// console.log(cardStorg.length);
+// console.log(cardStorg);
 
 let playerInFild=0;
 
@@ -623,10 +690,18 @@ let currentTargetDiv = null;
 let currentWidth = null;
 const clearcrad=0;
 function generateCardonclick() {
-    if (dataInput[0].value && dataInput[1].value && dataInput[6].value && 
+    if (dataInput[6].value && 
         dataInput[7].value && dataInput[8].value && dataInput[9].value && 
         dataInput[10].value && dataInput[11].value) {
-        
+            const pNameText = document.querySelector('.PName').textContent;
+                console.log(pNameText);
+                let dupCheck=[];
+             dupCheck = Array.from(document.querySelectorAll('#cardTemplate')).filter(card => {
+                return card.querySelector('#card-name').textContent == pNameText;})
+                // console.log(dupCheck.length);
+                
+            if (dupCheck.length<=2) {
+                
         const cardclone = cardTemplate.cloneNode(true);
         cardclone.style.width = `${currentWidth}%`;
         
@@ -662,8 +737,12 @@ function generateCardonclick() {
         colorChanger();
         CloseAdd_playerSection();
         hovercard();
+        // DragAndDorp();
         clearcrad++
         return checkClickingEvent=true;
+    }else{ alert("Player Alredy Existe!!!")};    
+    }else{
+        alert("fill UP all inputs!!!");
     }
 }
 
@@ -680,19 +759,24 @@ function GenerateCard(div, width) {
 }
 let selectedCard;
 let checkClickingEvent;
-cardsFild.forEach(card => {
-    card.addEventListener('click', (event) => {
-        card.style.cssText = 'z-index:0;';
-        card.style.margin='0px';
-        ShowAdd_playerSection();
-        checkClickingEvent=false
-        selectedCard=event.currentTarget;
-        GenerateCard(selectedCard, 100);
-        
-    
-    });
-});
+let cradColne;
 
+function cardOnClick(){
+    cardsFild.forEach(card => {
+        card.addEventListener('click', (event) => {
+            cradColne=card.cloneNode(true);
+            card.style.cssText = 'z-index:0;';
+            card.style.margin='0px';
+            ShowAdd_playerSection();
+            checkClickingEvent=false
+            selectedCard=event.currentTarget;
+            GenerateCard(selectedCard, 100);
+            
+        
+        });
+    });
+}
+cardOnClick();
 const addPlayerBtn = document.getElementById('addPlayerBtn');
 addPlayerBtn.addEventListener('click', () => {
     ShowAdd_playerSection();
@@ -700,3 +784,8 @@ addPlayerBtn.addEventListener('click', () => {
     GenerateCard(players_sub, 38);
     console.log('in');
 });
+
+
+
+
+    
